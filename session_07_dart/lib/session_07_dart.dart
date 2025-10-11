@@ -246,3 +246,18 @@ class User {
 //  print('Хэрэглэгч 1: ${user1.username}, ${user1.email}');
 //  print('Хэрэглэгч 2: ${user2.username}, ${user2.email}');
 //}
+
+//Dasgal5
+import 'dart:math';
+class Circle {
+  double radius;
+  Circle(this.radius);
+  double calculateArea() {
+    return pi * (radius * radius);
+  }
+}
+void main() {
+  final myCircle = Circle(10.0);
+  double area = myCircle.calculateArea();
+  print('Тойргийн талбай: $area');
+}
