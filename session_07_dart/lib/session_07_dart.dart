@@ -1,3 +1,4 @@
+import 'dart:math';
 //dasgal1
 void sayHello() {
   print('Hello, Dart!');
@@ -248,7 +249,6 @@ class User {
 //}
 
 //Dasgal5
-import 'dart:math';
 class Circle {
   double radius;
   Circle(this.radius);
@@ -256,8 +256,250 @@ class Circle {
     return pi * (radius * radius);
   }
 }
+//void main() {
+//  final myCircle = Circle(10.0);
+//  double area = myCircle.calculateArea();
+//  print('Тойргийн талбай: $area');
+//}
+
+//Dasgal6
+class Student {
+  String name;
+  int grade;
+  Student({required this.name, required this.grade});
+}
+//void main() {
+//  final student1 = Student(grade: 5, name: 'Тулга');
+//  print('${student1.name} ${student1.grade}-р ангид сурдаг.');
+//}
+
+//Dasgal7
+class Rectangle {
+  final double width;
+  final double height;
+  Rectangle(this.width, this.height);
+}
+
+//Dasgal8
+class Song {
+  String title;
+  String artist;
+  Song(this.title, this.artist);
+
+  @override
+  String toString() {
+    return "'$title' by $artist";
+  }
+}
+
+//Dasgal9
+class Temperature {
+  double celsius;
+  Temperature(this.celsius);
+
+  double toFahrenheit() {
+    return celsius * 1.8 + 32;
+  }
+}
+
+//Dasgal10
+class Point {
+  int x;
+  int y;
+  Point(this.x, this.y);
+}
+
+//Dasgal11
+class BankAccount {
+  double balance = 0;
+  void deposit(double amount) {
+    balance += amount;
+    print('$amount₮ нэмэгдлээ. Одоогийн үлдэгдэл: $balance₮');
+  }
+  void withdraw(double amount) {
+    if (balance >= amount) {
+      balance -= amount;
+      print('$amount₮ гаргалаа. Одоогийн үлдэгдэл: $balance₮');
+    } else {
+      print('Дансны үлдэгдэл хүрэлцэхгүй байна.');
+    }
+  }
+}
+
+//Dasgal12
+class Product {
+  String name;
+  double price;
+  String category;
+  Product({required this.name, required this.price, this.category = "Ерөнхий"});
+}
+
+//Dasgal13, 14
+class Playlist {
+  String name;
+  List<Song> songs = [];
+  Playlist(this.name);
+  void addSong(Song song) {
+    songs.add(song);
+  }
+}
+
+//Dasgal15
+class Player {
+  String name; 
+  int number;
+  Player(this.name, this.number);
+}
+class Team {
+  String teamName;
+  List<Player> players = [];
+  Team(this.teamName);
+  void addPlayer(Player player) {
+    players.add(player);
+  }
+  int getTotalPlayers() {
+    return players.length;
+  }
+}
+
+//Dasgal16
+class Triangle {
+  int a;
+  int b;
+  int c;
+  Triangle(this.a, this.b, this.c);
+  bool isTriangleValid() {
+    return (a + b > c) && (a + c > b) && (b + c > a);
+  }
+}
+
+//Dasgal17
+class Stopwatch {
+  DateTime? _startTime;
+  Duration _elapsed = Duration.zero;
+  bool _isRunning = false;
+
+  void start() {
+    if (!_isRunning) {
+      _startTime = DateTime.now();
+      _isRunning = true;
+    }
+  }
+  void stop() {
+    if (_isRunning) {
+      _elapsed += DateTime.now().difference(_startTime!);
+      _isRunning = false;
+    }
+  }
+  void reset() {
+    _elapsed = Duration.zero;
+    _isRunning = false;
+  }
+  Duration get elapsedTime {
+    if (_isRunning) {
+      return _elapsed += DateTime.now().difference(_startTime!);
+    }
+    return _elapsed;
+  }
+}
+
+//Dasgal18
+class QuizQuestion {
+  String questionText;
+  List<String> options;
+  int correctAnswerIndex;
+  QuizQuestion(this.questionText, this.options, this.correctAnswerIndex);
+
+  bool checkAnswer(int selectedIndex) {
+    return correctAnswerIndex == selectedIndex;
+  }
+}
+
+//Dasgal19
+class Inventory {
+  List<Product> products = [];
+  void addProduct(Product p) {
+    products.add(p);
+  }
+  void removeProduct(String name) {
+    products.removeWhere((p) => p.name == name);
+  }
+  Product? findProductByName(String name) {
+    bool hasEven = products.any((p) => p.name == name);
+    print(hasEven);
+  }
+}
+
+//Dasgal20
+class RPGCharacter {
+  String name;
+  int health = 100;
+  int attackPower;
+  RPGCharacter(this.name, this.attackPower);
+  void attack(RPGCharacter target) {
+    print('$name, ${target.name} руу довтоллоо!');
+    target.takeDamage(attackPower);
+  }
+  void takeDamage(int damage) {
+    health -= damage;
+    print('$name $damage хохирол амслаа. Одоо $health амьтай.');
+  }
+}
+
+
 void main() {
-  final myCircle = Circle(10.0);
-  double area = myCircle.calculateArea();
-  print('Тойргийн талбай: $area');
+//Dasgal7
+//  final rect = Rectangle(10, 20);
+//  print('Width of the rectangle: ${rect.width}');
+//Dasgal8
+//  final mySong = Song('Bohemian Rhapsody', 'Queen');
+//  print(mySong);
+//Dasgal9
+//  final temp = Temperature(30);
+//  print('30°C нь ${temp.toFahrenheit()}°F');
+//Dasgal10
+//  final p1 = Point(10, 20);
+//  print('Цэгийн координат: (x: ${p1.x}, y: ${p1.y})');
+//Dasgal11
+//  final myAccount = BankAccount();
+//  myAccount.deposit(1000);
+//  myAccount.withdraw(300);
+//  myAccount.withdraw(800);
+//Dasgal12
+//  final product1 = Product(name: 'Сүү', price: 3500);
+//  final product2 = Product(name: 'Гар утас', price: 1500000, category: 'Технологи');
+//  print('${product1.name} - ${product1.category}');
+//  print('${product2.name} - ${product2.category}');
+//Dasgal13
+//  final myPlaylist = Playlist('Миний дуртай дуунууд');
+//  print('${myPlaylist.name} плейлистэд одоогоор ${myPlaylist.songs.length} дуу байна.');
+//Dasgal14
+//  final myPlaylist = Playlist('Миний дуртай дуунууд');
+//  myPlaylist.addSong(Song('Stairway to Heaven', 'Led Zeppelin'));
+//  myPlaylist.addSong(Song('Yesterday', 'The Beatles'));
+//  print(myPlaylist.songs);
+//Dasgal15
+//  final dreamTeam = Team('Мөрөөдлийн баг');
+//  dreamTeam.addPlayer(Player('Майкл Жордан', 23));
+//  dreamTeam.addPlayer(Player('Леброн Жеймс', 6));
+//  print('${dreamTeam.teamName} ${dreamTeam.getTotalPlayers()} тоглогчтой.');
+//Dasgal16
+//  final validTriangle = Triangle(3, 4, 5);
+//  final invalidTriangle = Triangle(1, 2, 5);
+//  print('3, 4, 5-тай гурвалжин зөв үү? ${validTriangle.isTriangleValid()}');
+//  print('1, 2, 5-тай гурвалжин зөв үү? ${invalidTriangle.isTriangleValid()}');
+//Dasgal17
+//  final stopwatch = Stopwatch();
+//  print('Секундомер үүслээ.');
+//Dasgal18
+//  final q1 = QuizQuestion('Dart-г хэн бүтээсэн бэ?', ['Apple', 'Google', 'Microsoft'], 1);
+//  print('2 дахь хариулт зөв үү? ${q1.checkAnswer(1)}');
+//Dasgal19
+//  final inventory = Inventory();
+//  print('Барааны бүртгэл үүслээ.');
+//Dasgal20
+//  final hero = RPGCharacter('Баатар', 20);
+//  final monster = RPGCharacter('Мангас', 15);
+//  hero.attack(monster);
+//  monster.attack(hero);
 }
