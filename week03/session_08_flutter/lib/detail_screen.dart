@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:session_08_flutter/contact.dart';
-import 'home_screen.dart';
 
 class DetailScreen extends StatelessWidget {
   final Contact contact;
@@ -9,7 +8,28 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Details'),),
+      appBar: AppBar(title: Text('Details')),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                backgroundImage: NetworkImage(contact.avatarUrl),
+                radius: 100,
+              ),
+              Text('Нэр: ${contact.name}', style: TextStyle(fontSize: 18)),
+              Text(
+                'Утасны дугаар: ${contact.phone}',
+                style: TextStyle(fontSize: 18),
+              ),
+              Text('Email: ${contact.email}', style: TextStyle(fontSize: 18)),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
